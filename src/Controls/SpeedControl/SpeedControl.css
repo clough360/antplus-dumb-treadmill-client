@@ -1,0 +1,70 @@
+.speed-control {
+    display: flex;
+    flex-direction: row;
+}
+
+.speed-button-container {
+    flex: auto;
+    display: flex;
+    flex-direction: row;
+    font-size: 3em;
+}
+
+.speed-button {
+    flex: 1 0px;
+    margin: 5px;
+}
+
+.big-button:active:hover {
+    background-color: grey;
+}
+
+.big-button-up {
+    border: 1px solid white;
+    font-size: 1em;
+}
+
+.big-button {
+    border: 1px solid grey;
+}
+
+.big-button-down {
+    border: 1px solid grey;
+    font-size: 1em;
+}
+
+.big-button-down:active:hover {
+    background-color: grey;
+}
+
+.speed-on {
+    background-color: green;
+}
+
+.big-info-units {
+    font-size: 2.5em;
+    vertical-align: baseline;
+    height: 100%;
+}
+
+.big-info-title {
+    font-variant: small-caps;
+    font-size: 2em;
+}
+
+.big-info-value {
+    font-size: 10em;
+    line-height: 1;
+}
+
+.big-info-container {
+    flex: 1;
+    background-color: gray;
+    margin: 0 5px 0 5px;
+    padding: 20px;
+}
+
+.big-info-container.selected {
+    border: 5px solid red;
+    padding: 15px;
+}
