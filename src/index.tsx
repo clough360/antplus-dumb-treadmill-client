@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import {Api, ApiCallError} from './api/api';
+import { Api } from './api/api';
 import {appStore} from './store/reducers/allReducers';
-import { updateSpeedFromApi, apiReducer, setApiStatus } from './store/reducers/apiReducer';
+import { updateSpeedFromApi, setApiStatus } from './store/reducers/apiReducer';
 import {DataLogger} from './dataLogger/dataLogger';
+import { App } from './App';
 
 const store = createStore(appStore);
 

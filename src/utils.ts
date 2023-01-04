@@ -13,7 +13,7 @@ export const convertSpeedToMps = (speed: number, units:SpeedUnits): number => {
     }
 }
 
-export const convertSpeedFromMps = (speed: number, units:SpeedUnits): number => {
+export const convertSpeedFromMps = (speed: number, units:SpeedUnits): number | undefined => {
     switch (units) {
         case 'mps': return speed;
         case 'mph': return speed * 2.23694;
@@ -24,11 +24,12 @@ export const convertSpeedFromMps = (speed: number, units:SpeedUnits): number => 
         case 'miles': return speed * 2.23694;
         case 'km': return speed * 3.6000059687997;
     }
+    return undefined;
 }
 
 export const convertSpeedFromMpsForDisplay = (speed: number, units:SpeedUnits): string => {
     var value = convertSpeedFromMps(speed, units);
-    if (value === Infinity || value === NaN) {
+    if (!value || value === Infinity ) {
         return '-';
     }
     return value.toFixed(1);

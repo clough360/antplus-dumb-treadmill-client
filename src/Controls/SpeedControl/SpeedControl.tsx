@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './SpeedControl.css';
 import { SpeedUnits } from '../../types/types';
-import { convertSpeedFromMpsForDisplay, convertSpeedFromMps } from '../../utils';
+import { convertSpeedFromMps } from '../../utils';
 
 export interface SpeedControlProps {
     currentSpeed: number;
@@ -43,11 +43,11 @@ export const SpeedControl = ({currentSpeed, onSpeedChange, targetSpeed, displayU
         <div className='speed-control'>
             <div className='speed-controls-container'>
                 <div className='speed-button-container'>
-                    {fixedSpeeds.map(f => <div className={`speed-button big-button ${speedMatchCss(targetSpeedInDisplayUnits, f)}`} onClick={() => onSpeedChange(f,displayUnits)}>{f}</div> )}
+                    {fixedSpeeds.map(f => <div className={`speed-button big-button ${speedMatchCss(targetSpeedInDisplayUnits ?? 0, f)}`} onClick={() => onSpeedChange(f,displayUnits)}>{f}</div> )}
                 </div>
                 <div className='speed-button-container'>
                     {adjustOptions.map(o => 
-                        <div className="speed-button big-button-up" onClick={() => onSpeedChange(targetSpeedInDisplayUnits+convertToMps(o, mpsConversionFactor), displayUnits)}>{o > 0 ? '+' + o: o}</div>
+                        <div className="speed-button big-button-up" onClick={() => onSpeedChange((targetSpeedInDisplayUnits ?? 0) +convertToMps(o, mpsConversionFactor), displayUnits)}>{o > 0 ? '+' + o: o}</div>
                     )}
                 </div>
             </div>

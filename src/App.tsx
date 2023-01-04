@@ -9,7 +9,7 @@ import {api} from './index';
 import {StatusBar} from './Controls/StatusBar';
 import { SpeedUnits } from './types/types';
 
-function App() {
+export const App = (): JSX.Element => {
   const apiSpeed = useSelector((state: AppState) => state.api.speed);
   const apiStatus = useSelector((state: AppState) => state.api.status);
   const config = useSelector((state: AppState) => state.config);
@@ -36,6 +36,10 @@ function App() {
 
   setInterval(() => {},1000);
 
+  const startStopButton = targetSpeed === 0 
+    ? <div className='start-stop-button start' onClick={() =>handleOnSpeedChange(1,'kph')}><span>Start</span></div>
+    : <div className='start-stop-button stop' onClick={() => handleOnSpeedChange(0,'mps')}><span>Stop</span></div>;
+
   return (
     <div className="app">
       <StatusBar apiStatus={apiStatus}/>
@@ -51,12 +55,9 @@ function App() {
         </div>
       </div>
       <div className='start-stop-container'>
-        { targetSpeed === 0 ? <div className='start-stop-button start' onClick={() =>handleOnSpeedChange(1,'kph')}><span>Start</span></div> : 
-        <div className='start-stop-button stop' onClick={() => handleOnSpeedChange(0,'mps')}><span>Stop</span></div> }
-        <div className='start-stop-button reset' onClick={() => handleOnSpeedChange(0,'mps')}><span>Reset</span></div> }
+        { startStopButton }
+        <div className='start-stop-button reset' onClick={() => handleOnSpeedChange(0,'mps')}><span>Reset</span></div>
       </div>
     </div>
   );
 }
-
-export default App;
